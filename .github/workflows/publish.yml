@@ -29,8 +29,8 @@ jobs:
         sudo apt-get install -y webkit2gtk-4.0
     - name: install app dependencies and build it
       run: |
-        yarn global add typescript webpack-cli webpack
-        yarn && yarn build
+        npm i -g typescript webpack-cli webpack
+        npm install && npm run build
     - uses: tauri-apps/tauri-action@v0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
