@@ -30,8 +30,8 @@ jobs:
     - name: install app dependencies and build it
       run: |
         npm ci
-        lerna bootstrap
-        lerna run build
+        npx lerna bootstrap
+        npx lerna run build
     - uses: tauri-apps/tauri-action@v0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
