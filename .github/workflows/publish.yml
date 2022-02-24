@@ -29,12 +29,14 @@ jobs:
         sudo apt-get install -y webkit2gtk-4.0
     - name: install app dependencies and build it
       run: |
-        npm i -g typescript webpack-cli webpack ts-loader
-        npm ci && npm run build
+        npm ci
+        lerna bootstrap
+        lerna run build
     - uses: tauri-apps/tauri-action@v0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        projectPath: ./packages/admin
         tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
         releaseName: "Twincy v__VERSION__"
         releaseBody: "See the assets to download this version and install."
