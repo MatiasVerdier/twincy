@@ -5,9 +5,9 @@
   },
   "build": {
     "distDir": "../dist",
-    "devPath": "http://localhost:6602",
+    "devPath": "http://localhost:6601",
     "beforeDevCommand": "",
-    "beforeBuildCommand": "npx lerna run build"
+    "beforeBuildCommand": "npx lerna run --parallel --stream build"
   },
   "tauri": {
     "bundle": {
@@ -70,7 +70,7 @@
         "fullscreen": false,
         "center": true,
         "visible": true,
-        "url": "http://localhost:6601",
+        "url": "client.html",
         "label": "client"
       },
       {

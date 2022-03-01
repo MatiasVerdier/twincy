@@ -23,4 +23,12 @@ export default defineConfig({
       },
     ],
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        client: path.resolve(__dirname, "client.html"),
+      },
+    },
+  },
 });

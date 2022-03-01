@@ -5,9 +5,10 @@
   "author": "Goncy",
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "kill": "kill-port --port 6600,6601,6602",
+    "kill": "kill-port --port 6600,6601",
     "build": "lerna run build --parallel --stream",
     "build:tauri": "lerna run tauri -- build",
+    "prestart": "npm run kill",
     "start": "lerna run start --parallel --stream",
     "predev": "npm run kill",
     "dev": "lerna run dev --parallel --stream",
