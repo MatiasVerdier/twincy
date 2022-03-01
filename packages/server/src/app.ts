@@ -29,6 +29,9 @@ app.use(
   }),
 );
 
+const assetsRoot = path.resolve(__dirname + "/../../admin/dist");
+app.use(express.static(assetsRoot));
+
 io.on("connection", (socket) => {
   // Listen for changes on the selected message
   socket.on("select", (message: Message) => io.emit("select", message));
@@ -76,25 +79,21 @@ client.on("message", (_channel, tags, message) => {
   });
 });
 
-// Send the admin panel, used by electron
+// Send the admin panel
 app.get("/admin", (_req, res) => {
   if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.resolve(__dirname + "/../../admin/dist")));
-
-    res.sendFile("index.html", {root: path.resolve(__dirname + "/../../admin/dist")});
+    res.sendFile("/index.html", {root: assetsRoot});
   } else {
-    res.redirect("http://localhost:6602");
+    res.redirect("http://localhost:6601");
   }
 });
 
-// Send the client, used by electron
+// Send the client
 app.get("/client", (_req, res) => {
   if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.resolve(__dirname + "/../../client/dist")));
-
-    res.sendFile(path.resolve(__dirname + "/../../client/dist/index.html"));
+    res.sendFile("/client.html", {root: assetsRoot});
   } else {
-    res.redirect("http://localhost:6601");
+    res.redirect("http://localhost:6601/client.html");
   }
 });
 

@@ -35,7 +35,7 @@ const DashboardScreen: React.VFC<Props> = ({socket}) => {
   const {onCopy} = useClipboard(
     process.env.NODE_ENV === "production"
       ? `http://localhost:6600/client`
-      : `http://localhost:6601`,
+      : `http://localhost:6601/client.html`,
   );
   const toast = useToast();
 
